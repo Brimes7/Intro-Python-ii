@@ -1,5 +1,8 @@
+import sys
+
 from room import Room
 from player import Player
+from item import Item
 
 
 room = {
@@ -39,20 +42,26 @@ room['treasure'].s_to = room['narrow']
 
 # Make a new player object that is currently in the 'outside' room.
 player = Player("dum dum", room['outside'])
+item = Item("sword", "A shiny double edged sword")
+room
 
 # Write a loop that:
 #
 # * Prints the current room name
 direction = ""
-while direction.lower() is not "q":
+while True:
     player.__str__()
     direction = input("Enter the direction using cardinal abbreviations(i.e - N, S, E, W. Or Q when you give up: ")
 
     new_room = getattr(player.room, direction.lower() + "_to", None)
     if new_room:
         player.room = new_room
+    elif direction is "q" or direction is "Q":
+        print("You broke the game. ")
+        sys.exit(1)
     else:
         print("You suck, try again. ")
+
 
 
 # * Prints the current description (the textwrap module might be useful here).
