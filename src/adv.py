@@ -38,11 +38,23 @@ room['treasure'].s_to = room['narrow']
 #
 
 # Make a new player object that is currently in the 'outside' room.
-player = Player()
+player = Player("dum dum", room['outside'])
 
 # Write a loop that:
 #
 # * Prints the current room name
+direction = ""
+while direction.lower() is not "q":
+    player.__str__()
+    direction = input("Enter the direction using cardinal abbreviations(i.e - N, S, E, W. Or Q when you give up: ")
+
+    new_room = getattr(player.room, direction.lower() + "_to", None)
+    if new_room:
+        player.room = new_room
+    else:
+        print("You suck, try again. ")
+
+
 # * Prints the current description (the textwrap module might be useful here).
 # * Waits for user input and decides what to do.
 #
