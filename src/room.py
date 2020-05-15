@@ -15,3 +15,13 @@ class Room:
 #work in progress prints the item
     def add_item(self, item):
         self.items.append(item)
+
+    def get_item(self, item_name):
+        # finding the item
+        for itm in self.items:
+            #Checking if the item is what we want
+            if itm.name == item_name:
+                self.items.remove(itm)
+                #returns item to player
+                return itm
+        return None

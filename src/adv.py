@@ -42,27 +42,34 @@ room['treasure'].s_to = room['narrow']
 
 # Make a new player object that is currently in the 'outside' room .
 player = Player("dum dum", room['outside'])
-item = Item("sword", "A shiny double edged sword")
+
+room['outside'].add_item(Item("sword", "A shiny double edged sword"))
+room['foyer'].add_item(Item("Flame-Thrower", "Powerful funnel of fire"))
 
 
 # Write a loop that:
 #
 # * Prints the current room name
-direction = ""
+command = ""
 while True:
     player.__str__()
-    direction = input("Enter the direction using cardinal abbreviations(i.e - N, S, E, W. Or Q when you give up: ")
+    command = input("Enter the direction using cardinal abbreviations(i.e - N, S, E, W. Or Q when you give up: ")
+    #looking for every space
+    command = command.split(" ")
+    if command.__len__() is 1:
 
-    new_room = getattr(player.room, direction.lower() + "_to", None)
-    if new_room:
-        player.room = new_room
-    elif direction is "q" or direction is "Q":
-        print("You broke the game. ")
-        sys.exit(1)
+        new_room = getattr(player.room, command[0].lower() + "_to", None)
+        if new_room:
+            player.room = new_room
+        elif command is "q" or command is "Q":
+            print("You broke the game. ")
+            sys.exit(1)
+        else:
+            print("You suck, try again. ")
+    elif len(command) is 2:
+
     else:
-        print("You suck, try again. ")
-
-
+        print("length is 2")
 
 # * Prints the current description (the textwrap module might be useful here).
 # * Waits for user input and decides what to do.
