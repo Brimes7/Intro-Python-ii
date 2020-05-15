@@ -67,6 +67,9 @@ while True:
         else:
             print("You suck, try again. ")
     elif len(command) is 2:
+        function = getattr(player, command[0].lower(), None)
+        if function:
+            function(command[1])
 
     else:
         print("length is 2")

@@ -15,11 +15,19 @@ class Player:
         if item is not None:
             item.on_take()
             self.items.append(item)
+        else:
+            print("That item isn't at your disposal.")
 
     def take(self, item_name):
         self.grab(item_name)
 
     def drop(self, item_name):
+        for itm in self.items:
+            #Checking if the item is what we want
+            if itm.name == item_name:
+                self.items.remove(itm)
+                #removed from player and added to the room
+                self.room.add_item(itm)
 
 
 

@@ -12,6 +12,11 @@ class Room:
 # prints the description
     def __str__(self):
         print(self.description)
+        print("Inside the room you see: ")
+
+        for items in self.items:
+            items.__str__()
+
 #work in progress prints the item
     def add_item(self, item):
         self.items.append(item)

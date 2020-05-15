@@ -7,3 +7,6 @@ class Item:
 
     def on_take(self):
         print("You have picked up " + self.name)
+
+    def __str__(self):
+        print(self.name + ": " + self.description)
