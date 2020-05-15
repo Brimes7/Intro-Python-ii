@@ -43,7 +43,7 @@ room['treasure'].s_to = room['narrow']
 # Make a new player object that is currently in the 'outside' room.
 player = Player("dum dum", room['outside'])
 item = Item("sword", "A shiny double edged sword")
-item.add_item()
+
 
 # Write a loop that:
 #
