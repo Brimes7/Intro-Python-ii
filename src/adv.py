@@ -44,7 +44,10 @@ room['treasure'].s_to = room['narrow']
 player = Player("dum dum", room['outside'])
 
 room['outside'].add_item(Item("sword", "A shiny double edged sword"))
-room['foyer'].add_item(Item("Flame-Thrower", "Powerful funnel of fire"))
+room['foyer'].add_item(Item("FlameThrower", "Powerful funnel of fire"))
+room['overlook'].add_item(Item("JetPack", "Light weight battery powered flying mechanism"))
+room["narrow"].add_item(Item("Shield", "Strong defense made of steel"))
+room["treasure"].add_item(Item("jewels", "Rubies and emeralds"))
 
 
 # Write a loop that:
@@ -53,7 +56,7 @@ room['foyer'].add_item(Item("Flame-Thrower", "Powerful funnel of fire"))
 command = ""
 while True:
     player.__str__()
-    command = input("Enter the direction using cardinal abbreviations(i.e - N, S, E, W. Or Q when you give up: ")
+    command = input("Enter the direction using cardinal abbreviations(i.e - N, S, E, W. Or Q when you give up, if along the way you find treasure - use grab or drop as you see fit: ")
     #looking for every space
     command = command.split(" ")
     if command.__len__() is 1:
@@ -64,12 +67,16 @@ while True:
         elif command is "q" or command is "Q":
             print("You broke the game. ")
             sys.exit(1)
+        elif command is "i" or command is "inventory":
+            print("In your inventory you have acquired: " + player.room)
         else:
             print("You suck, try again. ")
     elif len(command) is 2:
         function = getattr(player, command[0].lower(), None)
         if function:
             function(command[1])
+    # elif command is "i":
+    #     print("In your inventory you have acquired: " + player.inventory)
 
     else:
         print("length is 2")

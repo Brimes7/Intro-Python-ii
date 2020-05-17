@@ -10,3 +10,7 @@ class Item:
 
     def __str__(self):
         print(self.name + ": " + self.description)
+
+    # def inventory(self, name, i):
+    #     if i is not None:
+    #         print(name)

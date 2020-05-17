@@ -29,6 +29,11 @@ class Player:
                 #removed from player and added to the room
                 self.room.add_item(itm)
 
+    def inventory(self, item_name):
+        item = self.room.get_item(item_name)
+        if item is not None:
+            print("Would you like to check the inventory?")
+
 
 
 
